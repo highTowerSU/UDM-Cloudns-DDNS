@@ -31,5 +31,7 @@ curl -s https://raw.githubusercontent.com/highTowerSU/UDM-Cloudns-DDNS/main/inst
 Add Urls to $DATA_DIR/cloudns-ddns/urls.conf
 
 https://ipv4.cloudns.net/api/dynamicURL/?q=your-string-here
+
 https://ipv4.cloudns.net/api/dynamicURL/?q=your-string-here&notify=1
+
 https://ipv6.cloudns.net/api/dynamicURL/?q=your-string-here
