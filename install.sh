@@ -43,6 +43,6 @@ echo "==> Adding cron job to crontab"
   echo "$cron_job"
 ) | crontab -
 
-echo "==> Edit configuration at $DATA_DIR/cloudns-ddns/update-cloudflare-dns.conf"
+echo "==> Edit configuration at $DATA_DIR/cloudns-ddns/url.conf"
 echo "==> The script will run every minute, you can change this in the crontab file"
 exit 0
