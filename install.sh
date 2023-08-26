@@ -24,7 +24,7 @@ curl -sO https://raw.githubusercontent.com/highTowerSU/UDM-Cloudns-DDNS/main/upd
 mkdir -p $DATA_DIR/cloudns-ddns
 mv update-cloudns-dns.sh $DATA_DIR/cloudns-ddns/update-cloudns-dns.sh
 chmod +x $DATA_DIR/cloudns-ddns/update-cloudns-dns.sh
-echo $DATA_DIR/cloudns-ddns/urls.conf <<EOF
+test ! -f $DATA_DIR/cloudns-ddns/urls.conf && cat >$DATA_DIR/cloudns-ddns/urls.conf <<EOF
 #Example: Put your URLs here:
 #https://ipv4.cloudns.net/api/dynamicURL/?q=your-string-here
 #https://ipv4.cloudns.net/api/dynamicURL/?q=your-string-here&notify=1
