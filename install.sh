@@ -20,15 +20,21 @@ case "$(ubnt-device-info firmware || true)" in
   ;;
 esac
 
-curl -sO https://raw.githubusercontent.com/fire1ce/DDNS-Cloudflare-Bash/main/update-cloudflare-dns.sh
-mkdir -p $DATA_DIR/cloudflare-ddns
-mv update-cloudflare-dns.sh $DATA_DIR/cloudflare-ddns/update-cloudflare-dns.sh
-chmod +x $DATA_DIR/cloudflare-ddns/update-cloudflare-dns.sh
-curl -sO https://raw.githubusercontent.com/fire1ce/UDM-Cloudflare-DDNS/main/update-cloudflare-dns.conf
-mv update-cloudflare-dns.conf $DATA_DIR/cloudflare-ddns/update-cloudflare-dns.conf
+curl -sO https://raw.githubusercontent.com/highTowerSU/UDM-Cloudns-DDNS/main/update-cloudns-dns.sh
+mkdir -p $DATA_DIR/cloudns-ddns
+mv update-cloudns-dns.sh $DATA_DIR/cloudns-ddns/update-cloudns-dns.sh
+chmod +x $DATA_DIR/cloudns-ddns/update-cloudns-dns.sh
+echo $DATA_DIR/cloudns-ddns/urls.conf <<EOF
+#Example: Put your URLs here:
+#https://ipv4.cloudns.net/api/dynamicURL/?q=your-string-here
+#https://ipv4.cloudns.net/api/dynamicURL/?q=your-string-here&notify=1
+#https://ipv6.cloudns.net/api/dynamicURL/?q=your-string-here
+
+
+EOF
 
 # Define the cron job
-cron_job="* * * * * $DATA_DIR/cloudflare-ddns/update-cloudflare-dns.sh"
+cron_job="* * * * * $DATA_DIR/cloudns-ddns/update-cloudns-dns.sh"
 
 # Add the cron job to the user's crontab file
 echo "==> Adding cron job to crontab"
@@ -37,6 +43,6 @@ echo "==> Adding cron job to crontab"
   echo "$cron_job"
 ) | crontab -
 
-echo "==> Edit configuration at $DATA_DIR/cloudflare-ddns/update-cloudflare-dns.conf"
+echo "==> Edit configuration at $DATA_DIR/cloudns-ddns/update-cloudflare-dns.conf"
 echo "==> The script will run every minute, you can change this in the crontab file"
 exit 0
