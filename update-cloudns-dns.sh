@@ -22,6 +22,6 @@ esac
 
 cd $DATA_DIR/cloudns-ddns
 
-grep -v -e "^[[:space:]]*$" urls.conf | grep -v "#" | while read -r line; do wget -q --read-timeout=0.0 --waitretry=5 --tries=400 --background "${line}"; done
+grep -v -e "^[[:space:]]*$" urls.conf | grep -v "#" | while read -r line; do wget -q --read-timeout=0.0 --waitretry=5 --tries=400 -O /dev/null --background "${line}"; done
 
 exit 0
